@@ -34,7 +34,7 @@ st.subheader("4to Ciclo")
     
     
 
-openai_key = config("OPENAI_KEY")
+openai_key = st.secrets["OPENAI_KEY"]
 
 #llm = ChatOpenAI(model="gpt-4o-mini", api_key=OPENAI_KEY)
 llm = ChatOpenAI(model="gpt-4o-mini", api_key=openai_key)
