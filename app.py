@@ -51,10 +51,10 @@ vector_store = FAISS.from_documents(chunks, embeddings)
 
 retriever = vector_store.as_retriever()
 
-contextualize_system_prompt = """Given a chat history and the latest user question \
-which might reference context in the chat history, formulate a standalone question \
-which can be understood without the chat history. Do NOT answer the question, \
-just reformulate it if needed and otherwise return it as is."""
+contextualize_system_prompt = """Dado un historial de conversación y la última pregunta del usuario,
+que podría hacer referencia al contexto en el historial de la conversación, formula una pregunta independiente
+que pueda entenderse sin el historial de la conversación. NO respondas la pregunta,
+solo reformúlala si es necesario y, de lo contrario, devuélvela tal como está."""
 
 contextualize_prompt = ChatPromptTemplate.from_messages(
     [
