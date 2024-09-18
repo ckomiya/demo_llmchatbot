@@ -5,7 +5,8 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 #from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
+#from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain.chains import create_retrieval_chain, create_history_aware_retriever
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -46,7 +47,7 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20
 chunks = text_splitter.split_documents(documents)
 
 embeddings = OpenAIEmbeddings(openai_api_key=openai_key)
-vector_store = Chroma.from_documents(chunks, embeddings)
+vector_store = FAISS.from_documents(chunks, embeddings)
 
 retriever = vector_store.as_retriever()
 
